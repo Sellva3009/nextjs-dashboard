@@ -36,10 +36,7 @@ export async function createInvoice(formData: FormData) {
       `;
   } catch (error) {
       console.error('Error inserting invoice:', error);
-      return {
-        message: 'Failed to create invoice. Please try again.',
-        success: false,
-      }
+      throw new Error('Failed to create invoice.');
   }
 
   revalidatePath('/dashboard/invoices');
